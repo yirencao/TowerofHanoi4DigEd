@@ -10,7 +10,7 @@ Round = 0;
 win = messageWin = false;
 cl = ["#ff6db6","#ffb6db",
 "#490092","#006ddb","#b66dff","#6db6ff","#b6dbff",
-"#920000","#924900","#db6d00","#24ff24","#ffff6d"];//"#004949"
+"#920000","#924900","#db6d00","#ffff6d"];//"#004949", "#24ff24"
 Xstart = Xend = 0;
 touchCheck = false;
 speedAuto = 1;
@@ -171,7 +171,7 @@ class game {
         }
         count++;
         if (messageWin && win && count++ > 0) {
-            let evalute = (Round == B.length) ? "Perfect!\nClick the green icon on upper right corner for the next LEVEL!\n\nWhenever you wanna restart the current level, also just click the green button!" : (Round / B.length < 1.6) ? "Pretty good, we believe you can do even better!" : "Hey try it again, you definitely can do much better!";
+            let evalute = (Round == B.length) ? "Perfect!\nClick the purple icon on upper right corner for the next LEVEL!\n\nWhenever you wanna restart the current level, also just click the purple button!" : (Round / B.length < 1.6) ? "Pretty good, we believe you can do even better!" : "Hey try it again, you definitely can do much better!";
             window.alert("You Win!\n" + "N = " + N + "\nSteps Used: " + Round + "\nEvaluate: " + evalute);
             win = auto = false;
             speedAuto = 1;
@@ -215,10 +215,11 @@ class game {
 
     drawIcon() {
         this.context.font = this.getWidth() / 2 + 'px Arial Black';
-        this.context.fillStyle = "green";
+        this.context.fillStyle = "#5D3A9B";
         this.context.fillRect(game_W  - 1.7 * this.getWidth(), 0, 1.7 * this.getWidth(), this.getWidth());
         this.context.fillStyle = "#ba2323";
         this.context.fillText("Count: " + Round, game_W / 2 - this.getWidth(), this.getWidth() / 1.5);
+        this.context.fillStyle = "#E66100";
         this.context.fillText("N = " + N, game_W  - 1.5 * this.getWidth(), this.getWidth() / 1.5);
         if ((Date.now() - start)/1000 >= 300) 
         {   
