@@ -26,12 +26,15 @@ class game {
         this.canvas = null;
         this.context = null;
         this.init();
+        window.alert("Welcome to the world of Tower of Hanoi!:D\nRemember the rules you saw on moodle? Now it's time to apply them!\nAll you need to do is to drag the disks around and put all of them to the very right peg. Enjoy!");
+        window.alert("Oh, last thing, almost forgot to mention, you can click on the purple button on upper right corner if wanna restart the current level. Good luck!:))");
     }
 
     init() {
         this.canvas = document.getElementById("canvas");
         this.context = this.canvas.getContext("2d");
         // document.body.appendChild(this.canvas);
+        // this.document.body.style.backgroundImage = "images/background1.jpg";
 
         A[1] = [];
         A[2] = [];
@@ -215,10 +218,13 @@ class game {
 
     drawIcon() {
         this.context.font = this.getWidth() / 2 + 'px Arial Black';
+        // upper right button color
         this.context.fillStyle = "#5D3A9B";
         this.context.fillRect(game_W  - 1.7 * this.getWidth(), 0, 1.7 * this.getWidth(), this.getWidth());
+        // count text color
         this.context.fillStyle = "#ba2323";
         this.context.fillText("Count: " + Round, game_W / 2 - this.getWidth(), this.getWidth() / 1.5);
+        // upper right button text color
         this.context.fillStyle = "#E66100";
         this.context.fillText("N = " + N, game_W  - 1.5 * this.getWidth(), this.getWidth() / 1.5);
         if ((Date.now() - start)/1000 >= 300) 
@@ -235,8 +241,12 @@ class game {
 
     clearScreen() {
         this.context.clearRect(0, 0, game_W, game_H);
+        // background color
         this.context.fillStyle = "#009292";
+        // this.context.drawImage(auto_im, 0, 0, this.getWidth() * 1.5, this.getWidth());
+
         this.context.fillRect(0 , 0, game_W, game_H);
+        // peg color
         this.context.fillStyle = '#000000';
         for (let i = 1; i <= 3; i++) {
             this.context.beginPath();
