@@ -26,8 +26,8 @@ class game {
         this.canvas = null;
         this.context = null;
         this.init();
-        window.alert("Welcome to the world of Tower of Hanoi!:D\nRemember the rules you saw on moodle? Now it's time to apply them!\nAll you need to do is to drag the disks around and put all of them to the very right peg. Enjoy!");
-        window.alert("Oh, last thing, almost forgot to mention, you can click on the purple button on upper right corner if wanna restart the current level. Good luck!:))");
+        window.alert("Welcome to the world of Tower of Hanoi!:D\nRemember the rules you saw on moodle? Now it's time to apply them!\nDrag disk one by one. All you need to do is to put all of them to the very right peg. Have fun!");
+        window.alert("Oh, almost forgot, you can click on the upper right purple button if wanna restart the current level. How you will get to the next level? You will figure out:) Good luck!");
     }
 
     init() {
