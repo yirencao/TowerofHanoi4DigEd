@@ -220,7 +220,7 @@ class game {
         this.context.fillStyle = "#ba2323";
         this.context.fillText("Count: " + Round, game_W / 2 - this.getWidth(), this.getWidth() / 1.5);
         this.context.fillText("N = " + N, game_W  - 1.5 * this.getWidth(), this.getWidth() / 1.5);
-        if ((Date.now() - start)/1000 >= 3) 
+        if ((Date.now() - start)/1000 >= 300) 
         {   
             if (showAutoAlert) {
                 window.alert("Hey are you getting stuck? On the upper left side, a wonderful AUTO functionality is available now!\nOhhh how magical it is! Try that out! :D");
