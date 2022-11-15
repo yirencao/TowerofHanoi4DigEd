@@ -27,7 +27,7 @@ class game {
         this.context = null;
         this.init();
         window.alert("Welcome to the world of Tower of Hanoi!:D\nRemember the rules you saw on moodle? Now it's time to apply them!\nDrag disk one by one. All you need to do is to put all of them to the very right peg. Have fun!");
-        window.alert("Oh, almost forgot, you can click on the upper right purple button if wanna restart the current level. How you will get to the next level? You will figure out:) Good luck!");
+        window.alert("Oh, almost forgot, there will be a purple button on the right upper corner which allows you to restart the current level. Good luck!:)");
     }
 
     init() {
@@ -174,8 +174,8 @@ class game {
         }
         count++;
         if (messageWin && win && count++ > 0) {
-            let evalute = (Round == B.length) ? "Perfect!\nClick the purple icon on upper right corner for the next LEVEL!\n\nWhenever you wanna restart the current level, also just click the purple button!" : (Round / B.length < 1.6) ? "Pretty good, we believe you can do even better!" : "Hey try it again, you definitely can do much better!";
-            window.alert("You Win!\n" + "N = " + N + "\nSteps Used: " + Round + "\nEvaluate: " + evalute);
+            let evalute = (Round == B.length) ? "Congratulations!\nNow you unlock a new (but transitory) functionality;) Next time, when you click the purple icon on upper right corner, you will be at the next LEVEL! Yes increased disks, increased difficulty!" : (Round / B.length < 1.6) ? "That's super good! You used a reasonable amount of steps. But I bet you can do even better! Try again!" : "Sadly you're using too many steps, you definitely can do better than this! Try again!";
+            window.alert("Puzzle Solved!\n" + "Number of Disks = " + N + "\nSteps Used: " + Round + "\nComments: " + evalute);
             win = auto = false;
             speedAuto = 1;
             if (Round == B.length)
@@ -230,7 +230,7 @@ class game {
         if ((Date.now() - start)/1000 >= 300) 
         {   
             if (showAutoAlert) {
-                window.alert("Hey are you getting stuck? On the upper left side, a wonderful AUTO functionality is available now!\nOhhh how magical it is! Try that out! :D");
+                window.alert("Hey are you getting stuck? On the upper left side, a wonderful AUTO button will soon be available now!\nOhhh how brilliant it is! You might also discover the hidden effect of sped up animation!:D");
                 showAutoAlert = false;
             }
             this.context.drawImage(auto_im, 0, 0, this.getWidth() * 1.5, this.getWidth());
