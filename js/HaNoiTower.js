@@ -250,7 +250,7 @@ class game {
         // this.context.fillText("N = " + N, game_W  - 1.5 * this.getWidth(), this.getWidth() / 1.5);
         
         //  3min = 180s
-        if ((Date.now() - timeAtCurrentLevel)/1000 >= 18) {
+        if ((Date.now() - timeAtCurrentLevel)/1000 >= 180) {
             if (N == 3 || N == 4) {
                 // draw auto
                 this.context.drawImage(auto_im, 0, 0, this.getWidth() * 1.5, this.getWidth());
@@ -258,7 +258,7 @@ class game {
         }
 
 
-        if ((Date.now() - start)/1000 >= 36) 
+        if ((Date.now() - start)/1000 >= 360) 
         {   
             if (showAutoAlert) {
                 window.alert("Hey are you getting stuck? On the upper left side, the wonderful AUTO button will always be available now!\nOhhh how brilliant it is! You might also discover the hidden effect of sped up animation!:D");
@@ -266,6 +266,14 @@ class game {
             }
             // draw auto
             this.context.drawImage(auto_im, 0, 0, this.getWidth() * 1.5, this.getWidth());
+        }
+
+        if ((Date.now() - start)/1000 >= 600) 
+        {   
+            
+            window.alert("THANK YOU FOR PLAYING THE GAME! Now please go back to your moodle course and continue.");
+            window.close(); 
+            
         }
     }
 
