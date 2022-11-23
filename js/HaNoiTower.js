@@ -6,6 +6,11 @@ x = [, 0, 0, 0];
 index = 0;
 count = 1;
 auto = false;
+
+// auto_level3 = false;
+// auto_level4 = false;
+
+
 Round = 0;
 win = messageWin = false;
 cl = ["#ff6db6","#ffb6db",
@@ -18,8 +23,10 @@ speedAuto = 1;
 var auto_im = new Image();
 auto_im.src = "images/auto.png";
 winLevel = false;
-var start = Date.now();
+var start = timeAtCurrentLevel = Date.now();
 showAutoAlert = true;
+
+nextLevelButton = false;
 
 class game {
     constructor() {
@@ -72,6 +79,8 @@ class game {
             if (x <  1.5 * this.getWidth() && y < this.getWidth())
                 this.Auto();
             if (x > game_W - 2 * this.getWidth()  && y < this.getWidth() &&winLevel) {
+                // go to the next level
+                timeAtCurrentLevel = Date.now();
                 this.newN(++N);
                 winLevel = false;
                 console.log("progress");
@@ -174,13 +183,14 @@ class game {
         }
         count++;
         if (messageWin && win && count++ > 0) {
-            let evalute = (Round == B.length) ? "Congratulations!\nNow you unlock a new (but transitory) functionality;) Next time, when you click the purple icon on upper right corner, you will be at the next LEVEL! Yes increased disks, increased difficulty!" : (Round / B.length < 1.6) ? "That's super good! You used a reasonable amount of steps. But I bet you can do even better! Try again!" : "Sadly you're using too many steps, you definitely can do better than this! Try again!";
+            let evalute = (Round == B.length) ? "Congratulations!\nNow you can click the purple icon on upper right corner to the next LEVEL! :D" : (Round / B.length < 1.6) ? "That's super good! You used a reasonable amount of steps. But I bet you can do even better! Try again!" : "Sadly you're using too many steps, you definitely can do better than this! Try again!";
             window.alert("Puzzle Solved!\n" + "Number of Disks = " + N + "\nSteps Used: " + Round + "\nComments: " + evalute);
             win = auto = false;
             speedAuto = 1;
             if (Round == B.length)
                 winLevel = true;
 
+            
             this.newN(N);
             
         }
@@ -224,15 +234,37 @@ class game {
         // count text color
         this.context.fillStyle = "#ba2323";
         this.context.fillText("Count: " + Round, game_W / 2 - this.getWidth(), this.getWidth() / 1.5);
-        // upper right button text color
+
         this.context.fillStyle = "#E66100";
-        this.context.fillText("N = " + N, game_W  - 1.5 * this.getWidth(), this.getWidth() / 1.5);
-        if ((Date.now() - start)/1000 >= 300) 
+        if (winLevel) {
+            this.context.fillText("next", game_W  - 1.5 * this.getWidth(), this.getWidth() / 1.5);
+            // this.context.fillText("N = " + N, game_W  - 1.5 * this.getWidth(), this.getWidth() / 1.5);
+        }
+        else{
+        this.context.fillText("reset", game_W  - 1.5 * this.getWidth(), this.getWidth() / 1.5);}
+
+        
+
+        // // upper right button text color
+        // this.context.fillStyle = "#E66100";
+        // this.context.fillText("N = " + N, game_W  - 1.5 * this.getWidth(), this.getWidth() / 1.5);
+        
+        //  3min = 180s
+        if ((Date.now() - timeAtCurrentLevel)/1000 >= 18) {
+            if (N == 3 || N == 4) {
+                // draw auto
+                this.context.drawImage(auto_im, 0, 0, this.getWidth() * 1.5, this.getWidth());
+            } 
+        }
+
+
+        if ((Date.now() - start)/1000 >= 36) 
         {   
             if (showAutoAlert) {
-                window.alert("Hey are you getting stuck? On the upper left side, a wonderful AUTO button will soon be available now!\nOhhh how brilliant it is! You might also discover the hidden effect of sped up animation!:D");
+                window.alert("Hey are you getting stuck? On the upper left side, the wonderful AUTO button will always be available now!\nOhhh how brilliant it is! You might also discover the hidden effect of sped up animation!:D");
                 showAutoAlert = false;
             }
+            // draw auto
             this.context.drawImage(auto_im, 0, 0, this.getWidth() * 1.5, this.getWidth());
         }
     }
